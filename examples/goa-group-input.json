@@ -1,0 +1,60 @@
+{
+  "trip": {
+    "destination": "Goa, India",
+    "days": 3,
+    "participants": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "currency": "INR",
+    "note": "Illustrative example, not live researched"
+  },
+  "preferences": {
+    "tourist attractions": 5,
+    "restaurants": 4,
+    "hotels": 3,
+    "cafes": 2
+  },
+  "places": [
+    {
+      "id": "sample-beach",
+      "name": "Sample Beach Viewpoint",
+      "category": "tourist attractions",
+      "rating": 4.5,
+      "latitude": 15.5,
+      "longitude": 73.8,
+      "votes": 3,
+      "source_url": null,
+      "verified_at": null
+    },
+    {
+      "id": "sample-food",
+      "name": "Sample Local Restaurant",
+      "category": "restaurants",
+      "rating": 4.2,
+      "latitude": 15.49,
+      "longitude": 73.82,
+      "votes": 2
+    },
+    {
+      "id": "sample-cafe",
+      "name": "Sample Cafe",
+      "category": "cafes",
+      "rating": null,
+      "latitude": null,
+      "longitude": null,
+      "votes": 0
+    },
+    {
+      "id": "sample-hotel",
+      "name": "Sample Hotel",
+      "category": "hotels",
+      "rating": 4,
+      "latitude": 15.48,
+      "longitude": 73.83,
+      "votes": 1
+    }
+  ]
+}

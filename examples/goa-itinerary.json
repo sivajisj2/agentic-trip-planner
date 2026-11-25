@@ -1,0 +1,60 @@
+{
+  "timezone": "Asia/Kolkata",
+  "days": [
+    {
+      "date": "2026-12-05",
+      "activities": [
+        {
+          "name": "Breakfast",
+          "start": "09:00",
+          "end": "10:00",
+          "cost": 400
+        },
+        {
+          "name": "Sample Beach Viewpoint",
+          "start": "11:00",
+          "end": "13:00",
+          "cost": 0
+        },
+        {
+          "name": "Lunch",
+          "start": "13:30",
+          "end": "14:30",
+          "cost": 800
+        }
+      ]
+    },
+    {
+      "date": "2026-12-06",
+      "activities": [
+        {
+          "name": "Sample local market",
+          "start": "10:00",
+          "end": "12:00",
+          "cost": 0
+        },
+        {
+          "name": "Lunch",
+          "start": "12:30",
+          "end": "13:30",
+          "cost": 800
+        }
+      ]
+    },
+    {
+      "date": "2026-12-07",
+      "activities": [
+        {
+          "name": "Breakfast and checkout",
+          "start": "09:00",
+          "end": "11:00"
+        },
+        {
+          "name": "Flexible departure buffer",
+          "start": "11:00",
+          "end": "13:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "participants": 4,
+  "currency": "INR",
+  "group_limit": 24000,
+  "items": [
+    {
+      "name": "Stay (2 nights)",
+      "amount": 6000,
+      "quantity": 1,
+      "basis": "group",
+      "status": "estimate"
+    },
+    {
+      "name": "Meals (per person)",
+      "amount": 1200,
+      "quantity": 1,
+      "basis": "per_person",
+      "status": "estimate"
+    },
+    {
+      "name": "Local transport",
+      "amount": 3200,
+      "quantity": 1,
+      "basis": "group",
+      "status": "estimate"
+    },
+    {
+      "name": "Activities (per person)",
+      "amount": 1000,
+      "quantity": 1,
+      "basis": "per_person",
+      "status": "estimate"
+    }
+  ]
+}

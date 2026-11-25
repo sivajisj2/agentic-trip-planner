@@ -1,0 +1,82 @@
+{
+  "scoring_model": {
+    "weights": {
+      "rating": 0.3,
+      "preference": 0.3,
+      "votes": 0.25,
+      "coordinates": 0.15
+    },
+    "score_range": [
+      0,
+      100
+    ],
+    "note": "Coordinates represent data completeness, not route distance"
+  },
+  "ranked_places": [
+    {
+      "id": "sample-beach",
+      "name": "Sample Beach Viewpoint",
+      "category": "tourist attractions",
+      "score": 79.5,
+      "rating": 4.5,
+      "votes": 3,
+      "source_url": null,
+      "verified_at": null,
+      "explanations": [
+        "Rating: 4.5/5",
+        "Category preference: 5/5",
+        "Votes: 3 (capped at 10 for scoring)",
+        "Coordinates available"
+      ]
+    },
+    {
+      "id": "sample-food",
+      "name": "Sample Local Restaurant",
+      "category": "restaurants",
+      "score": 69.2,
+      "rating": 4.2,
+      "votes": 2,
+      "source_url": null,
+      "verified_at": null,
+      "explanations": [
+        "Rating: 4.2/5",
+        "Category preference: 4/5",
+        "Votes: 2 (capped at 10 for scoring)",
+        "Coordinates available"
+      ]
+    },
+    {
+      "id": "sample-hotel",
+      "name": "Sample Hotel",
+      "category": "hotels",
+      "score": 59.5,
+      "rating": 4,
+      "votes": 1,
+      "source_url": null,
+      "verified_at": null,
+      "explanations": [
+        "Rating: 4.0/5",
+        "Category preference: 3/5",
+        "Votes: 1 (capped at 10 for scoring)",
+        "Coordinates available"
+      ]
+    },
+    {
+      "id": "sample-cafe",
+      "name": "Sample Cafe",
+      "category": "cafes",
+      "score": 34.5,
+      "rating": null,
+      "votes": 0,
+      "source_url": null,
+      "verified_at": null,
+      "explanations": [
+        "Rating unavailable: neutral 0.5",
+        "Category preference: 2/5",
+        "Votes: 0 (capped at 10 for scoring)",
+        "Coordinates unavailable: neutral 0.5"
+      ]
+    }
+  ],
+  "warnings": []
+}
