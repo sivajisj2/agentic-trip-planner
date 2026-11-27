@@ -1,5 +1,7 @@
 # Quick start
 
+For detailed OS-specific commands, custom inputs and expected outputs, see [Run locally](LOCAL_SETUP.md).
+
 ## 1. Get the skill
 
 Clone the repository:

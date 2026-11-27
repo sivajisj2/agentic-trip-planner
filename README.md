@@ -10,6 +10,7 @@ A portable, tool-agnostic AI agent skill for group travel planning. Inspired by 
 
 | Guide | Purpose |
 | --- | --- |
+| [Local setup](docs/LOCAL_SETUP.md) | Complete Windows, Linux/macOS and AI agent run instructions |
 | [Quick start](docs/QUICKSTART.md) | Install, run and try your first trip |
 | [Architecture](docs/ARCHITECTURE.md) | Agent workflow, scoring and trust boundaries |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Windows, JSON, tool and validation issues |
@@ -33,6 +34,8 @@ Copy this entire directory to your AI agent's supported skills location, then fo
 The root `SKILL.md` is the agent entry point. `references/` contains detailed rules; `scripts/` contains Python standard-library helpers. No server, database, API key, or pip install is required for the offline scoring and validation examples.
 
 ## Run examples
+
+For step-by-step setup, expected outputs and agent testing, see the [local setup guide](docs/LOCAL_SETUP.md).
 
 From this directory:
 
