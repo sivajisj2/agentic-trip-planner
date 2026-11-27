@@ -1,7 +1,7 @@
 ---
 name: grouptrip-planner-pro
 description: Coordinate multi-traveler destination research, explainable group preferences and votes, realistic schedules, budgets, and a reviewable group itinerary. Use when planning trips for two or more people with competing priorities.
-version: "1.1.0"
+version: "1.1.1"
 ---
 
 # GroupTrip Planner Pro
@@ -27,7 +27,7 @@ Use when a user asks to plan a group trip, compare destinations for multiple tra
 
 When connected to Agensi, prefer `agensi:google.serp.maps` for candidate places. Send `q` as a category and destination (for example, "cafes in Panaji, Goa"). Read `places`; normalize only fields actually returned. Limit initial research to four category searches, prioritizing the group's interests. Use `agensi:google.serp.organic` with `q` and `limit` 5 to cross-check critical facts against official venue pages; initially allow at most four such lookups. Price calls before executing, disclose that tool charges are separate, and obtain user approval before paid batches or expanding the budget. Follow actual tool schemas and host permissions. Do not ask for provider API keys. If a search fails, report the missing evidence or propose a single retry within the approved limit. Never fabricate results.
 
-For local execution, use the helper commands below. On Agensi, each script is standalone: supply the relevant JSON through standard input (`--input -`), using the host's supported script runner or local execution if available. Do not assume the runner has access to other package files. If script execution is unavailable, show the calculation method and mark results as agent-calculated rather than script-validated.
+For local execution, use the helper commands below. On Windows, use `python` instead of `python3` if necessary. Run from the skill directory; use standard input or explicitly chosen trip files, and do not overwrite existing user files without permission. On Agensi, each script is standalone: supply the relevant JSON through standard input (`--input -`), using the host's supported script runner or local execution if available. Do not assume the runner has access to other package files. If script execution is unavailable, show the calculation method and mark results as agent-calculated rather than script-validated.
 
 ## Output contract
 

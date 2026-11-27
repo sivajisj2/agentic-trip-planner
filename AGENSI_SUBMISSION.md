@@ -10,7 +10,9 @@ Suggested tags: travel, itinerary, group-planning, productivity, budgeting, coll
 
 Tools to select: `agensi:google.serp.maps`, `agensi:google.serp.organic`. These IDs are documented by Agensi. Confirm availability, pricing and response schemas in the creator account before publishing. Tool fees are separate from the listing price.
 
-Suggested commercial decision: start with a free listing or choose a paid price after evaluating competing products and whether publishing the entire skill publicly undermines paid distribution. No price or license is selected automatically.
+Published listing: https://www.agensi.io/skills/grouptrip-planner-pro
+
+The creator reports a $6 introductory price. Verify current pricing and payout settings in Creator Studio; no pricing or licensing changes are made by this repository.
 
 ## Submission steps
 
@@ -31,4 +33,4 @@ Suggested commercial decision: start with a free listing or choose a paid price 
 
 Official references: https://www.agensi.io/docs/packaging and https://www.agensi.io/docs/skills-that-use-tools
 
-Status: local helper tests passed; live agent acceptance, Agensi calls, marketplace review and publication remain pending.
+Status: the creator reports that the original listing is live and the original 14 helper tests passed on Windows. This repository patch is v1.1.1; upload the updated skill through Creator Studio separately. Live agent acceptance and Agensi calls remain unverified.

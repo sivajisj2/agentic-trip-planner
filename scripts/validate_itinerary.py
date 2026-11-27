@@ -9,6 +9,8 @@ from pathlib import Path
 
 
 def validate(data):
+    if not isinstance(data, dict):
+        raise ValueError('input must be a JSON object')
     errors, warnings = [], []
     if not isinstance(data.get('timezone'), str) or not data['timezone'].strip():
         errors.append('timezone is required')
@@ -24,7 +26,8 @@ def validate(data):
         try:
             if not isinstance(d, str):
                 raise ValueError()
-            date.fromisoformat(d)
+            if date.fromisoformat(d).isoformat() != d:
+                raise ValueError()
             if d in dates:
                 errors.append(f'duplicate date: {d}')
             dates.add(d)
@@ -57,9 +60,12 @@ def validate(data):
             if not a.get('source_url'):
                 warnings.append(f'{prefix}: no source URL; venue facts and opening hours unverified')
         intervals.sort()
-        for previous, current in zip(intervals, intervals[1:]):
-            if current[0] < previous[1]:
-                errors.append(f'{d}: overlap between {previous[2]} and {current[2]}')
+        latest = None
+        for current in intervals:
+            if latest is not None and current[0] < latest[1]:
+                errors.append(f'{d}: overlap between {latest[2]} and {current[2]}')
+            if latest is None or current[1] > latest[1]:
+                latest = current
     warnings.append('Travel times, venue opening hours, bookings and accessibility are not validated by this script')
     return {'valid': not errors, 'errors': errors, 'warnings': warnings}
 
@@ -70,15 +76,15 @@ def main():
     ap.add_argument('--output')
     a = ap.parse_args()
     try:
-        result = validate(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text()))
+        result = validate(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text(encoding='utf-8-sig')))
         encoded = json.dumps(result, indent=2) + '\n'
         if a.output:
-            Path(a.output).write_text(encoded)
+            Path(a.output).write_text(encoded, encoding='utf-8')
         else:
             print(encoded, end='')
         if not result['valid']:
             raise SystemExit(1)
-    except (OSError, ValueError, TypeError, json.JSONDecodeError) as e:
+    except (OSError, ValueError, TypeError, OverflowError) as e:
         ap.exit(1, f'ERROR: {e}\n')
 
 

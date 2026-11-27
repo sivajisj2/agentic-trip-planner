@@ -14,6 +14,8 @@ def amount(value, field):
 
 
 def calculate(data):
+    if not isinstance(data, dict):
+        raise ValueError('input must be a JSON object')
     n = data.get('participants')
     if isinstance(n, bool) or not isinstance(n, int) or n < 1:
         raise ValueError('participants must be a positive integer')
@@ -37,7 +39,11 @@ def calculate(data):
         if status not in ('estimate', 'verified'):
             raise ValueError(f'items[{i}].status must be estimate or verified')
         group_cost = round(price * qty * (n if basis == 'per_person' else 1), 2)
+        if not math.isfinite(group_cost):
+            raise ValueError(f'items[{i}] group cost exceeds numeric range')
         total += group_cost
+        if not math.isfinite(total):
+            raise ValueError('group total exceeds numeric range')
         breakdown.append({'name': item['name'], 'group_cost': group_cost, 'basis': basis, 'status': status})
     total = round(total, 2)
     limit = data.get('group_limit')
@@ -52,12 +58,12 @@ def main():
     ap.add_argument('--output')
     a = ap.parse_args()
     try:
-        result = json.dumps(calculate(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text())), indent=2) + '\n'
+        result = json.dumps(calculate(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text(encoding='utf-8-sig'))), indent=2) + '\n'
         if a.output:
-            Path(a.output).write_text(result)
+            Path(a.output).write_text(result, encoding='utf-8')
         else:
             print(result, end='')
-    except (OSError, ValueError, TypeError, json.JSONDecodeError) as e:
+    except (OSError, ValueError, TypeError, OverflowError) as e:
         ap.exit(1, f'ERROR: {e}\n')
 
 

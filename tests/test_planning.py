@@ -96,5 +96,36 @@ class StandaloneCliTests(unittest.TestCase):
                 self.assertIsInstance(json.loads(result.stdout), dict)
 
 
+class ReleaseRegressionTests(unittest.TestCase):
+    def test_non_object_input(self):
+        for fn in (score, calculate, validate):
+            with self.subTest(fn=fn.__name__), self.assertRaises(ValueError):
+                fn([])
+
+    def test_nested_overlap(self):
+        d = {'timezone': 'UTC', 'days': [{'date': '2026-12-01', 'activities': [
+            {'name': 'A', 'start': '09:00', 'end': '15:00'},
+            {'name': 'B', 'start': '10:00', 'end': '11:00'},
+            {'name': 'C', 'start': '12:00', 'end': '13:00'}]}]}
+        errors = validate(d)['errors']
+        self.assertEqual(sum('overlap' in e for e in errors), 2)
+
+    def test_strict_date(self):
+        self.assertFalse(validate({'timezone': 'UTC', 'days': [{'date': '20261201', 'activities': []}]})['valid'])
+
+    def test_boolean_exclusion(self):
+        with self.assertRaises(ValueError):
+            score({'places': [{'id': 'x', 'name': 'X', 'category': 'cafes', 'excluded': 'false'}]})
+
+    def test_budget_overflow(self):
+        with self.assertRaises(ValueError):
+            calculate({'participants': 2, 'currency': 'INR', 'items': [{'name': 'X', 'amount': 1e308, 'quantity': 10, 'basis': 'group'}]})
+
+    def test_ranked_fixture_matches(self):
+        data = json.loads((ROOT / 'examples/goa-group-input.json').read_text(encoding='utf-8'))
+        expected = json.loads((ROOT / 'examples/sample-ranked-output.json').read_text(encoding='utf-8'))
+        self.assertEqual(score(data), expected)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -16,6 +16,8 @@ def number(value, field, low, high):
 
 
 def score(data):
+    if not isinstance(data, dict):
+        raise ValueError('input must be a JSON object')
     preferences = data.get('preferences', {})
     if not isinstance(preferences, dict):
         raise ValueError('preferences must be an object')
@@ -34,6 +36,8 @@ def score(data):
         if pid in ids:
             raise ValueError(f'duplicate place id: {pid}')
         ids.add(pid)
+        if not isinstance(p.get('excluded', False), bool):
+            raise ValueError(f'{name}.excluded must be a boolean')
         if p.get('excluded', False):
             warnings.append(f'{name}: excluded by hard constraint')
             continue
@@ -65,13 +69,13 @@ def main():
     ap.add_argument('--output')
     a = ap.parse_args()
     try:
-        result = score(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text()))
+        result = score(json.loads(sys.stdin.read() if a.input == "-" else Path(a.input).read_text(encoding='utf-8-sig')))
         encoded = json.dumps(result, indent=2, ensure_ascii=False) + '\n'
         if a.output:
-            Path(a.output).write_text(encoded)
+            Path(a.output).write_text(encoded, encoding='utf-8')
         else:
             print(encoded, end='')
-    except (OSError, ValueError, TypeError, json.JSONDecodeError) as e:
+    except (OSError, ValueError, TypeError, OverflowError) as e:
         ap.exit(1, f'ERROR: {e}\n')
 
 
