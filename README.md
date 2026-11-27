@@ -6,6 +6,16 @@
 
 A portable, tool-agnostic AI agent skill for group travel planning. Inspired by the deterministic destination ranking and draft-review workflow in [TripSync AI](https://github.com/sivajisj2/tripsync-ai).
 
+## Documentation
+
+| Guide | Purpose |
+| --- | --- |
+| [Quick start](docs/QUICKSTART.md) | Install, run and try your first trip |
+| [Architecture](docs/ARCHITECTURE.md) | Agent workflow, scoring and trust boundaries |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Windows, JSON, tool and validation issues |
+| [Release checklist](docs/RELEASE_CHECKLIST.md) | Test and package marketplace updates |
+| [Changelog](CHANGELOG.md) | Version history |
+
 ## Features
 
 - Collect multiple travelers' preferences and hard constraints
